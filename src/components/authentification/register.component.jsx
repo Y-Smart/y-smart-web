@@ -24,7 +24,7 @@ const Register = () => {
 
         if (!emailError && email && password) {
             setTimeout(() => {
-                navigate('/login');
+                navigate('/devices');
             }, 1500);
         }
     };

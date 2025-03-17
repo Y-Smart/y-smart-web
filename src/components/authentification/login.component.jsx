@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
 
         if (email && password) {
-            history('/');  // TODO: Redirect to main view
+            history('/devices');  // TODO: Redirect to main view
         } else {
             setErrorMessage('Veuillez remplir tous les champs');
         }
