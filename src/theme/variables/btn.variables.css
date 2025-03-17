@@ -1,0 +1,31 @@
+:root {
+    --btn-disabled-bg: #a8a8a8;
+
+    --btn-primary-bg: #26252E;
+    --btn-primary-bg-hover: #212128;
+    --btn-primary-bg-focus: #24232c;
+
+    --btn-secondary-bg: #ECEAE6;
+    --btn-secondary-bg-hover: #d4cfc6;
+    --btn-secondary-bg-focus: #ededfd;
+
+    --btn-accent-bg: #BADFB4;
+    --btn-accent-bg-hover: #9bd192;
+    --btn-accent-bg-focus: #add9a6;
+
+    --btn-action-1-bg: #C6CED8;
+    --btn-action-1-bg-hover: #a8b5c4;
+    --btn-action-1-bg-focus: #bac3d0;
+
+    --btn-action-2-bg: #BDD2D8;
+    --btn-action-2-bg-hover: #9ebdc6;
+    --btn-action-2-bg-focus: #b0c9d0;
+
+    --btn-action-3-bg: #CDCBE5;
+    --btn-action-3-bg-hover: #aca8d4;
+    --btn-action-3-bg-focus: #bfbdde;
+
+    --btn-action-4-bg: #DFCECA;
+    --btn-action-4-bg-hover: #ccb1aa;
+    --btn-action-4-bg-focus: #d7c2bd;
+}
