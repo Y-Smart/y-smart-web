@@ -1,0 +1,22 @@
+.bg-layer-1 {
+    background-color: var(--bg-layer-1);
+}
+
+.bg-layer-2 {
+    background-color: var(--bg-layer-2);
+}
+
+.bg-layer-3 {
+    background-color: var(--bg-layer-3);
+}
+.title {
+    color: var(--color-title-1);
+}
+
+.dark-text {
+    color: var(--dark-color);
+}
+
+.light-text {
+    color: var(--light-color);
+}
