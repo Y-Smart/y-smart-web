@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "./theme/class/btn.class.css";
+@import "./theme/class/input.class.css";
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
