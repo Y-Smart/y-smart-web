@@ -2,10 +2,9 @@
 import { toast } from "react-toastify";
 
 const NotificationService = {
-    success: (message) => toast.success(message),
-    error: (message) => toast.error(message),
-    info: (message) => toast.info(message),
-    warning: (message) => toast.warning(message),
+
+    getDeviceFailed: () => toast.error("Echec de la récupération du matériel"),
+    getCommandsFailed: () => toast.error("Echec de la récupération de l'historique"),
 
     createSuccess: () => toast.success("Ajout réussi de matériel"),
     createFailed: () => toast.error("Echec d'ajout du matériel"),
@@ -15,6 +14,9 @@ const NotificationService = {
 
     updateSuccess: () => toast.success("Modification du matériel réussie"),
     updateFailed: () => toast.error("Echec de la modification du matériel"),
+
+    authFailed: () => toast.error("Authentification échoué"),
+    logOut: () => toast.success("Déconnexion"),
 };
 
 export default NotificationService;

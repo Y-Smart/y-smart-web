@@ -10,6 +10,7 @@ import Header from './Header';
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import tokenManagerService from "./services/tokenManager.service.js";
 import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
+import {APIDevicesManager} from "./api/api.service.js";
 
 const AppContent = () => {
     const location = useLocation();

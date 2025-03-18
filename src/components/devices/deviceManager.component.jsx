@@ -27,7 +27,7 @@ const DeviceManager = () => {
     };
 
     return (
-        <div className="flex min-h-screen p-6 gap-8">
+        <div className="flex p-6 gap-8">
             <div className="flex-1 flex flex-col gap-8">
                 <DeviceStats devices={devices} />
                 <DeviceTable
