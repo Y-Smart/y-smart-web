@@ -73,7 +73,7 @@ export const APIDevicesManager = {
 const commandsUrl = '/commands';
 export const APICommandsManager = {
     // READ ALL
-    getAllCommands: async (params = {}) => {
+    getAllCommands: async () => {
         try {
             const response = await HttpClient.get(commandsUrl);
             return response.data;
