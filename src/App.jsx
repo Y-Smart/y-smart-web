@@ -10,7 +10,7 @@ import Header from './Header';
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import tokenManagerService from "./services/tokenManager.service.js";
 import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
-tokenManagerService.setToken('Graa')
+
 const AppContent = () => {
     const location = useLocation();
     const showHeader = (location.pathname === "/commands" || location.pathname === "/devices") && !!tokenManagerService.getToken();
