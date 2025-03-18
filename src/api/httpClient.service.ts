@@ -3,7 +3,7 @@ import axios from "axios";
 import TokenService from "./../services/tokenManager.service";
 
 const HttpClient = axios.create({
-    baseURL: "http://10.70.4.50:3000/api/",
+    baseURL: "https://localhost:3000/api/",
     headers: { "Content-Type": "application/json" },
 });
 
