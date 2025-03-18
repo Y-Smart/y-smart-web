@@ -10,7 +10,6 @@ import Header from './Header';
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import tokenManagerService from "./services/tokenManager.service.js";
 import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
-import TokenManagerService from "./services/tokenManager.service.js";
 
 const AppContent = () => {
     const location = useLocation();

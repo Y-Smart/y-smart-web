@@ -5,11 +5,29 @@ const ITEMS_PER_PAGE = 5;
 
 const ViewCommands = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const commandsData = commandsDataMocked;
-
-    const totalPages = Math.ceil(commandsData.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const displayedCommands = commandsData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    
+    const fetchCommandsData = async () => {
+        try {
+          const data = await APICommandsManager.getAllCommands();
+          
+          if (!data || data.length === 0) {
+            console.log("Aucune donnée reçue de l'API, utilisation des données mockées");
+            apiCommandsData = commandsDataMocked;
+          } else {
+            apiCommandsData = data;
+          }
+        } catch (error) {
+          // En cas d'erreur, utilisation des données mockées
+          console.error("Erreur lors de la récupération des commandes:", error);
+          apiCommandsData = commandsDataMocked;
+        }
+        
+        const totalPages = Math.ceil(apiCommandsData.length / ITEMS_PER_PAGE);
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const displayedCommands = apiCommandsData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+        
+        return { totalPages, displayedCommands };
+      };
 
     const getStatusColor = (status) => {
         switch (status) {
