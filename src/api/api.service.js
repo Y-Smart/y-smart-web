@@ -18,7 +18,11 @@ export const APIDevicesManager = {
     },
 
     // CREATE OBJECT
-    createDevice: async (params = {}) => {
+    createDevice: async (params = {
+        type : '',
+        location : '',
+        state : null
+    }) => {
         try {
             const response = await HttpClient.post(devicesUrl, {params});
             if (response.status === 200) {
@@ -32,9 +36,13 @@ export const APIDevicesManager = {
     },
 
     // UPDATE OBJECT
-    updateDevice: async (params = {}) => {
+    updateDevice: async (deviceId = '' ,params = {
+        type : '',
+        location : '',
+        state : null
+    }) => {
         try {
-            const response = await HttpClient.post(devicesUrl, {params});
+            const response = await HttpClient.patch(devicesUrl+'/'+deviceId, {params});
             if (response.status === 200) {
                 NotificationService.updateSuccess();
             }
@@ -46,9 +54,9 @@ export const APIDevicesManager = {
     },
 
     // DELETE OBJECT
-    deleteDevice: async (params = {}) => {
+    deleteDevice: async ( deviceId = '' ) => {
         try {
-            const response = await HttpClient.post(devicesUrl, {params});
+            const response = await HttpClient.post(devicesUrl+'/'+deviceId);
             if (response.status === 200) {
                 NotificationService.deleteSuccess();
             }
@@ -67,7 +75,7 @@ export const APICommandsManager = {
     // READ ALL
     getAllCommands: async (params = {}) => {
         try {
-            const response = await HttpClient.get(commandsUrl, {params});
+            const response = await HttpClient.get(commandsUrl);
             return response.data;
         } catch (error) {
             NotificationService.getCommandsFailed();
@@ -81,11 +89,11 @@ const authUrl = '/auth';
 export const APIAuthManager = {
     // LOGIN
     logIn: async (params = {
-        email: 'graou@minou.miaou',
-        password: 'graou',
+        email: '',
+        password: '',
     }) => {
         try {
-            const response = await HttpClient.post(authUrl, {params});
+            const response = await HttpClient.post(authUrl+'/signin', {params});
 
             tokenManagerService.setToken('Graou no token');
             return response.data;
@@ -96,7 +104,25 @@ export const APIAuthManager = {
     },
 
     //REGISTER
+    signUp: async (params = {
+        email: '',
+        password: '',
+    }) => {
+        try {
+            const response = await HttpClient.post(authUrl+'/signup', {params});
 
-
+            tokenManagerService.setToken('Graou no token');
+            return response.data;
+        } catch (error) {
+            NotificationService.authFailed();
+            throw error;
+        }
+    },
+    
     // LOG OUT
+    logOut:() => {
+        tokenManagerService.removeToken();
+        NotificationService.logOut();
+    }
+    
 }
