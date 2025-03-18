@@ -10,7 +10,9 @@ import Header from './Header';
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import tokenManagerService from "./services/tokenManager.service.js";
 import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
+import { APIAuthManager } from './api/api.service.js';
 
+tokenManagerService.setToken("token");
 const App = () => {
     return (
         <div className="w-screen h-screen bg-layer-1">
