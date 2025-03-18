@@ -7,9 +7,9 @@ import tokenManagerService from "../services/tokenManager.service.js";
 const devicesUrl = '/devices';
 export const APIDevicesManager = {
     // READ ALL
-    getAllDevice: async (params = {}) => {
+    getAllDevice: async () => {
         try {
-            const response = await HttpClient.get(devicesUrl, {params});
+            const response = await HttpClient.get(devicesUrl);
             return response.data;
         } catch (error) {
             NotificationService.getDeviceFailed();
