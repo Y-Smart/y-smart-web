@@ -57,7 +57,7 @@ const DeviceTable = ({ devices, onDelete, onSelect, onCreate }) => {
                                 className="text-red-500 hover:text-red-700"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    onDelete(device.id);
+                                    onDelete(device['_id']);
                                 }}
                             >
                                 ✕

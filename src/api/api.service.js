@@ -2,6 +2,7 @@
 import HttpClient from "./HttpClient.service";
 import NotificationService from "./../services/notifications.service.js";
 import tokenManagerService from "../services/tokenManager.service.js";
+import {mockDevices} from "../components/devices/mockDevices.service.js";
 
 // API FOR DEVICES
 const devicesUrl = '/devices';
@@ -11,24 +12,23 @@ export const APIDevicesManager = {
         try {
             const response = await HttpClient.get(devicesUrl);
             return response.data;
-        } catch (error) {
+        } catch (e) {
             NotificationService.getDeviceFailed();
-            throw error;
+             console.error(e);
+            return mockDevices;
         }
     },
 
     // CREATE OBJECT
-    createDevice: async (params = {
-        type : '',
-        location : '',
-        state : null
-    }) => {
+    createDevice: async (
+        type = '',
+        location = '',
+    ) => {
         try {
-            const response = await HttpClient.post(devicesUrl, {params});
-            if (response.status === 200) {
+            const response = await HttpClient.post(devicesUrl, {type, location});
+            if (response.status === 201) {
                 NotificationService.createSuccess();
             }
-            return response.data;
         } catch (error) {
             NotificationService.createFailed();
             throw error;
@@ -36,17 +36,15 @@ export const APIDevicesManager = {
     },
 
     // UPDATE OBJECT
-    updateDevice: async (deviceId = '' ,params = {
-        type : '',
-        location : '',
-        state : null
-    }) => {
+    updateDevice: async (deviceId = '' ,
+        type = '',
+        location = ''
+    ) => {
         try {
-            const response = await HttpClient.patch(devicesUrl+'/'+deviceId, {params});
+            const response = await HttpClient.patch(devicesUrl+'/'+deviceId, {type,location});
             if (response.status === 200) {
                 NotificationService.updateSuccess();
             }
-            return response.data;
         } catch (error) {
             NotificationService.updateFailed();
             throw error;
@@ -56,7 +54,7 @@ export const APIDevicesManager = {
     // DELETE OBJECT
     deleteDevice: async ( deviceId = '' ) => {
         try {
-            const response = await HttpClient.post(devicesUrl+'/'+deviceId);
+            const response = await HttpClient.delete(devicesUrl+'/'+deviceId);
             if (response.status === 200) {
                 NotificationService.deleteSuccess();
             }
@@ -88,15 +86,14 @@ export const APICommandsManager = {
 const authUrl = '/auth';
 export const APIAuthManager = {
     // LOGIN
-    logIn: async (params = {
-        email: '',
-        password: '',
-    }) => {
+    logIn: async (
+        email= '',
+        password= '',
+    ) => {
         try {
-            const response = await HttpClient.post(authUrl+'/signin', {params});
-
-            tokenManagerService.setToken('Graou no token');
-            return response.data;
+            const response = await HttpClient.post(authUrl+'/signin', {email, password});
+            const token = response.data.accessToken;
+            tokenManagerService.setToken(token);
         } catch (error) {
             NotificationService.authFailed();
             throw error;
@@ -104,15 +101,11 @@ export const APIAuthManager = {
     },
 
     //REGISTER
-    signUp: async (params = {
-        email: '',
-        password: '',
-    }) => {
+    signUp: async (email, password) => {
         try {
-            const response = await HttpClient.post(authUrl+'/signup', {params});
-
-            tokenManagerService.setToken('Graou no token');
-            return response.data;
+            const response = await HttpClient.post(authUrl+'/signup', {email, password});
+            const token = response.data.accessToken;
+            tokenManagerService.setToken(token);
         } catch (error) {
             NotificationService.authFailed();
             throw error;

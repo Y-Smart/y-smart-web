@@ -19,6 +19,19 @@ export class Device {
     @Prop({ default: Date.now })
     createdAt: Date;
 }
+
+EXEMPLE DE REPONSE :
+[
+    {
+        "_id": "67d97d59ab32d4cee86fba69",
+        "owner": "67d97c2ec525c5a19b4e9d55",
+        "type": "Lampe",
+        "location": "Cuisine",
+        "state": "off",
+        "createdAt": "2025-03-18T14:04:09.619Z",
+        "__v": 0
+    }
+]
 */
 
 export const mockDevices = [
