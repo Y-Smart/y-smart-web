@@ -5,9 +5,10 @@ import Register from './components/authentification/register.component.jsx';
 import {ToastContainer} from "react-toastify";
 import LandingPage from "./components/landing/landingPage.component.jsx";
 import NotFound from "./components/404/404.component.jsx";
-import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import DeviceManager from "./components/devices/deviceManager.component.jsx";
-
+import ViewCommands from "./components/commands/viewCommands.component.jsx";
+import tokenManagerService from "./services/tokenManager.service.js";
+import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
 
 const App = () => {
     return (
@@ -16,17 +17,13 @@ const App = () => {
                 <ToastContainer/>
                 <div className="h-full w-full">
                     <Routes>
-                        {/* Route pour la page d'accueil */}
                         <Route exact path="/" element={<LandingPage/>}/>
-
-                        {/* Route pour la page de connexion */}
                         <Route path="/login" element={<Login/>}/>
-
-                        {/* Route pour la page d'inscription */}
                         <Route path="/register" element={<Register/>}/>
 
-                        <Route path="/commands" element={<ViewCommands />}/>
-                        <Route path="/devices" element={<DeviceManager />} />
+                        <Route path="/commands" element={ tokenManagerService.getToken() ? <ViewCommands /> : <Unauthorized /> }/>
+
+                        <Route path="/devices" element={tokenManagerService.getToken() ? <DeviceManager /> : <Unauthorized /> } />
 
                         {/* Route pour la page 404 si aucune des routes précédentes ne correspond */}
                         <Route path={'*'} element={<NotFound/>}/>
