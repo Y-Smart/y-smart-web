@@ -6,6 +6,7 @@ import {ToastContainer} from "react-toastify";
 import LandingPage from "./components/landing/landingPage.component.jsx";
 import NotFound from "./components/404/404.component.jsx";
 import DeviceManager from "./components/devices/deviceManager.component.jsx";
+import Header from './Header';
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import tokenManagerService from "./services/tokenManager.service.js";
 import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
@@ -13,7 +14,9 @@ import Unauthorized from "./components/unauthorized/unauthorized.component.jsx";
 const App = () => {
     return (
         <div className="w-screen h-screen bg-layer-1">
+            <Header/>
             <Router>
+
                 <ToastContainer/>
                 <div className="h-full w-full">
                     <Routes>
