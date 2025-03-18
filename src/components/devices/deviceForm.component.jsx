@@ -4,7 +4,6 @@ import { APIDevicesManager } from '../../api/api.service.js';
 const DeviceForm = ({ selectedDevice, onSave, onCancel }) => {
     const [device, setDevice] = useState({ type: '', location: '', status: 'offline' });
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
 
     useEffect(() => {
         if (selectedDevice) {
@@ -12,19 +11,16 @@ const DeviceForm = ({ selectedDevice, onSave, onCancel }) => {
         } else {
             setDevice({ type: '', location: '', status: 'offline' });
         }
-        setError(''); // Réinitialiser l'erreur quand un nouvel appareil est sélectionné ou ajouté
     }, [selectedDevice]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setDevice(prev => ({ ...prev, [name]: value }));
-        setError(''); // Efface l'erreur dès qu'une modification est faite
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        setError('');
 
         try {
             if (selectedDevice) {
@@ -35,7 +31,6 @@ const DeviceForm = ({ selectedDevice, onSave, onCancel }) => {
             onSave();
         } catch (err) {
             console.error('Erreur lors de la sauvegarde de l\'appareil :', err);
-            setError('Une erreur est survenue. Veuillez réessayer.');
         } finally {
             setLoading(false);
         }
@@ -46,7 +41,6 @@ const DeviceForm = ({ selectedDevice, onSave, onCancel }) => {
             <h2 className="text-xl font-semibold mb-8">
                 {selectedDevice ? "Modifier l'appareil" : 'Ajouter un nouvel appareil'}
             </h2>
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <form onSubmit={handleSubmit} className="space-y-4 flex flex-col gap-4">
                 <div>
                     <label className="block text-sm font-medium">Type</label>
