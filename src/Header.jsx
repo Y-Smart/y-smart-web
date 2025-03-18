@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import logo from './assets/ysmart.jpg';
+import tokenManagerService from "./services/tokenManager.service.js";
 
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
             <a href="/commands" className="nav-link">Historique</a>
           </li>
           <li>
-            <a href="/" className="nav-link">Déconnexion</a>
+            <a onClick={tokenManagerService.removeToken} href="/" className="nav-link">Déconnexion</a>
           </li>
         </ul>
       </nav>

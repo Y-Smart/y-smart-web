@@ -2,7 +2,7 @@ import React from "react";
 
 const Unauthorized = () => {
     return (
-        <div className="flex justify-center items-center min-h-screen bg-layer-1">
+        <div className="flex justify-center items-center min-h-screen bg-image">
             <div className="w-full max-w-md bg-layer-3 p-8 rounded-lg shadow-lg">
                 <h1 className="text-3xl font-semibold text-center title mb-6">Accès Interdit</h1>
                 <p className="text-center text-lg dark-text">Veuillez vous identifier pour accéder à cette page.</p>

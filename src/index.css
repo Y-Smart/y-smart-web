@@ -7,3 +7,10 @@
 
 @import "./theme/variables/btn.variables.css";
 @import "./theme/variables/global.variables.css";
+
+.bg-image {
+    background-image: url('./assets/Bg_landing-page.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
