@@ -6,6 +6,7 @@ import {ToastContainer} from "react-toastify";
 import LandingPage from "./components/landing/landingPage.component.jsx";
 import NotFound from "./components/404/404.component.jsx";
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
+import DeviceManager from "./components/devices/deviceManager.component.jsx";
 
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
                         <Route path="/register" element={<Register/>}/>
 
                         <Route path="/commands" element={<ViewCommands />}/>
-                        <Route path="/devices" />
+                        <Route path="/devices" element={<DeviceManager />} />
 
                         {/* Route pour la page 404 si aucune des routes précédentes ne correspond */}
                         <Route path={'*'} element={<NotFound/>}/>
