@@ -90,7 +90,7 @@ export const APIAuthManager = {
             tokenManagerService.setToken('Graou no token');
             return response.data;
         } catch (error) {
-            NotificationService.getCommandsFailed();
+            NotificationService.authFailed();
             throw error;
         }
     },
