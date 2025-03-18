@@ -7,12 +7,16 @@ import LandingPage from "./components/landing/landingPage.component.jsx";
 import NotFound from "./components/404/404.component.jsx";
 import ViewCommands from "./components/commands/viewCommands.component.jsx";
 import DeviceManager from "./components/devices/deviceManager.component.jsx";
+import Header from './Header';
+
 
 
 const App = () => {
     return (
         <div className="w-screen h-screen bg-layer-1">
+            <Header/>
             <Router>
+
                 <ToastContainer/>
                 <div className="h-full w-full">
                     <Routes>
