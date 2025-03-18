@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {APIAuthManager} from "../../api/api.service.js";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -8,15 +9,23 @@ const Login = () => {
 
     const history = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (email && password) {
-            history('/devices');  // TODO: Redirect to main view
-        } else {
+        if (!email || !password) {
             setErrorMessage('Veuillez remplir tous les champs');
+            return;
+        }
+
+        try {
+            await APIAuthManager.logIn(email, password);
+            history('/devices');
+        } catch (error) {
+            setErrorMessage("Échec de la connexion. Vérifiez vos identifiants.");
+            console.error("Erreur de connexion :", error);
         }
     };
+
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-image">

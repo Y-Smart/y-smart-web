@@ -36,8 +36,7 @@ const DeviceTable = ({ devices, onDelete, onSelect, onCreate }) => {
                 <tr className="bg-layer-1 [&>*]:p-2">
                     <th >Type</th>
                     <th >Emplacement</th>
-                    <th >Statut</th>
-                    <th className="text-right">Actions</th>
+                    <th className="text-right"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,15 +48,12 @@ const DeviceTable = ({ devices, onDelete, onSelect, onCreate }) => {
                     >
                         <td className="p-2">{device.type}</td>
                         <td className="p-2">{device.location}</td>
-                        <td className="p-2 text-{device.status === 'online' ? 'green' : device.status === 'offline' ? 'gray' : 'red'}-500">
-                            {device.status}
-                        </td>
                         <td className="p-2 text-right">
                             <button
                                 className="text-red-500 hover:text-red-700"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    onDelete(device.id);
+                                    onDelete(device['_id']);
                                 }}
                             >
                                 ✕
