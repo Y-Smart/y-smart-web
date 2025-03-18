@@ -21,7 +21,7 @@ const ViewCommands = () => {
     };
 
     return (
-        <div className="p-6 bg-layer-2 min-h-screen flex flex-col items-center">
+        <div className="p-6 bg-layer-2 flex flex-col items-center">
             <h2 className="text-2xl font-semibold mb-4">Historique des Commandes</h2>
             <div className="w-full max-w-4xl bg-layer-3 p-6 rounded-lg shadow-lg">
                 <table className="w-full border border-solid border-gray-300">
